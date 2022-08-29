@@ -5,14 +5,9 @@ Credit to Robert Kirberich for his website: https://solder-stencil.me on which t
 
 # Requirments to build
 python
-
 pcb-tools
-
 solidpython
-
 taskipy
-
 scipy
-
 
 You will also need OpenSCAD installed https://openscad.org
