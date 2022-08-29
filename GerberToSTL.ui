@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>GerberToSTL</class>
+ <widget class="QMainWindow" name="GerberToSTL">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>635</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>635</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>635</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>GerberToSTL</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>IAmOrion.png</normaloff>IAmOrion.png</iconset>
+  </property>
+  <property name="inputMethodHints">
+   <set>Qt::ImhNone</set>
+  </property>
+  <property name="toolButtonStyle">
+   <enum>Qt::ToolButtonIconOnly</enum>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>619</width>
+      <height>579</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="15" column="0" colspan="2">
+      <widget class="QCheckBox" name="inputReplaceRegions">
+       <property name="text">
+        <string>Replace regions (usually rounded rectangles) with bounding boxes.</string>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="0" colspan="2">
+      <widget class="QLabel" name="lblIncrease">
+       <property name="text">
+        <string>Adjust the size of all holes in the stencil by this amount (in mm). Use this if you find holes get printed smaller or larger than they should.  Will accept negative numbers.</string>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="0" colspan="2">
+      <widget class="QLabel" name="lblGap">
+       <property name="text">
+        <string>Gap (in mm) between board and stencil ledge. Increase this if the fit of the stencil is too tight.</string>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="0" colspan="2">
+      <widget class="QDoubleSpinBox" name="inputIncreaseHoleSize">
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="minimum">
+        <double>-10.000000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>10.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="value">
+        <double>0.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="0" colspan="2">
+      <widget class="QDoubleSpinBox" name="inputGap">
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="value">
+        <double>0.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="18" column="0" colspan="2">
+      <widget class="QPushButton" name="btnConvertToSTL">
+       <property name="font">
+        <font>
+         <pointsize>20</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(0, 0, 255);
+color: white;
+alternate-background-color: rgb(252, 1, 7);</string>
+       </property>
+       <property name="text">
+        <string>Convert To STL</string>
+       </property>
+      </widget>
+     </item>
+     <item row="17" column="0" colspan="2">
+      <widget class="QCheckBox" name="inputFlip">
+       <property name="text">
+        <string>Flip the stencil (use this for bottom layer stencils)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="16" column="0" colspan="2">
+      <widget class="QLabel" name="lblUseThis">
+       <property name="text">
+        <string>Use this if you find the processing takes extremely long, but note it might have unintended effects other than removing rounded corners.</string>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="0" colspan="2">
+      <widget class="QDoubleSpinBox" name="inputHeight">
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="value">
+        <double>1.200000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QRadioButton" name="inputSolderStencil">
+       <property name="text">
+        <string>Solder Stencil</string>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0" colspan="2">
+      <widget class="QPushButton" name="btnOpenOther">
+       <property name="text">
+        <string>Open Mask</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0" colspan="2">
+      <widget class="QLabel" name="lblThickness">
+       <property name="text">
+        <string>Thickness (in mm) of the stencil. Make sure this is a multiple of the layer height you use for printing.</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0" colspan="2">
+      <widget class="QCheckBox" name="inputIncludeLedge">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>Include a ledge around half the outline of the board, to allow aligning the stencil easily.</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0" colspan="2">
+      <widget class="QLabel" name="lblHeight">
+       <property name="text">
+        <string>Height of the stencil ledge. This should be less than the thickness of the PCB.</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0" colspan="2">
+      <widget class="QLabel" name="lblOtherFile">
+       <property name="text">
+        <string>No File Selected</string>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QRadioButton" name="inputPCB">
+       <property name="text">
+        <string>PCB</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0" colspan="2">
+      <widget class="QDoubleSpinBox" name="inputThickness">
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="value">
+        <double>0.200000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" colspan="2">
+      <widget class="QPushButton" name="btnOpenOutline">
+       <property name="text">
+        <string>Open Outline</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+       <property name="default">
+        <bool>false</bool>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0" colspan="2">
+      <widget class="QLabel" name="lblOutlineFile">
+       <property name="text">
+        <string>No File Selected</string>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>5</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>btnOpenOutline</tabstop>
+  <tabstop>btnOpenOther</tabstop>
+  <tabstop>inputThickness</tabstop>
+  <tabstop>inputIncludeLedge</tabstop>
+  <tabstop>inputHeight</tabstop>
+  <tabstop>inputGap</tabstop>
+  <tabstop>inputIncreaseHoleSize</tabstop>
+  <tabstop>inputReplaceRegions</tabstop>
+  <tabstop>inputFlip</tabstop>
+  <tabstop>btnConvertToSTL</tabstop>
+  <tabstop>inputPCB</tabstop>
+  <tabstop>inputSolderStencil</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
