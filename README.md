@@ -11,3 +11,8 @@ taskipy
 scipy  
 
 You will also need OpenSCAD installed https://openscad.org
+
+# Important
+
+When opening on macOS, the program will appear to open, then close, but it will reopen again.  It has to unpack the python environment etc first.  
+On Windows, it just takes a second or 2 before the GUI shows.
